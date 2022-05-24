@@ -12,7 +12,7 @@ function buttonIncrement()
     valueAccess.innerText = value
 
     let liElement = document.createElement("li")
-    liElement = document.setAttributes("data-counter", value)
+    liElement.setAttribute("data-counter", value)
     
     let textNode1 = document.createTextNode("Sentence ")
     let boldElement = document.createElement("b")
