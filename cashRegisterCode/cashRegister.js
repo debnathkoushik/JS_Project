@@ -46,7 +46,7 @@ function checkCashRegister(price, cash, cid)
                 sum = sum + noteValue
                 object.change[j][1] = sum
                 console.log("Note value is ", noteValue[i])
-                console.log("cid value is ", cid[3][1])
+                console.log("cid value is ", cid[i][1])
             }
             j++
         }
