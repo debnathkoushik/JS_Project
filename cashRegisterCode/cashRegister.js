@@ -5,6 +5,8 @@ function checkCashRegister(price, cash, cid)
         "status" : "NOTHING" ,
         "change" : []
     }
+    let temp = cid[8][1]
+    console.log(temp)
     
     let totalCid = 0
     for (let i = 0; i < cid.length; i++)
@@ -33,7 +35,7 @@ function checkCashRegister(price, cash, cid)
         for (let i = noteValue.length - 1; i >= 0 ; i--)
         {   
             let sum = 0
-
+            console.log("Value of i ",i)
             while (change >= noteValue[i] && cid[i][1] >= noteValue[i])
             {
                 console.log("At the starting ", change )
@@ -44,7 +46,7 @@ function checkCashRegister(price, cash, cid)
                 sum = sum + noteValue
                 object.change[j][1] = sum
                 console.log("Note value is ", noteValue[i])
-                console.log("cid value is ", cid[i][1])
+                console.log("cid value is ", cid[3][1])
             }
             j++
         }
