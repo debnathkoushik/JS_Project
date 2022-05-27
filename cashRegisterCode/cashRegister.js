@@ -12,9 +12,9 @@ function checkCashRegister(price, cash, cid)
         totalCid = totalCid + cid[i][1]
     }
 
-    const noteValue = [100, 20, 10, 5, 1, 0.25, 0.1, 0.05, 0.01]
+    let noteValue = [0.01, 0.05, 0.1, 0.25, 1, 5, 10, 20, 100]
+    
     let change = cash - price
-    let noteValueLength = noteValue.length
 
     if (totalCid === change)
     {
@@ -28,19 +28,25 @@ function checkCashRegister(price, cash, cid)
     }
     
     else
-    { 
-        for (let i = 0; i < noteValue.length; i++)
-        {    
+    {
+        let j = 0
+        for (let i = noteValue.length - 1; i >= 0 ; i--)
+        {   
             let sum = 0
 
-            while (change >= noteValue[i])
+            while (change >= noteValue[i] && cid[i][1] >= noteValue[i])
             {
+                console.log("At the starting ", change )
                 change = change - noteValue[i]
-                object.change[i] = cid[noteValueLength]
+                console.log("For " , noteValue[i], " change is ", change)
+                cid[i][1] = cid[i][1] - noteValue[i]
+                object.change[j] = cid[i]
                 sum = sum + noteValue
-                object.change[i][1] = sum
+                object.change[j][1] = sum
+                console.log("Note value is ", noteValue[i])
+                console.log("cid value is ", cid[i][1])
             }
-             noteValueLength--
+            j++
         }
 
         if (change === 0)
@@ -53,14 +59,14 @@ function checkCashRegister(price, cash, cid)
         else
         {
           object.status = "INSUFFICIENT_FUNDS"
-          object.change = null
+          object.change = []
 
           return object
         }
     }
 }
 
-checkCashRegister(19.5, 20, [
+console.log( checkCashRegister(19.5, 20, [
 	['PENNY', 1.01],
 	['NICKEL', 2.05],
 	['DIME', 3.1],
@@ -70,40 +76,40 @@ checkCashRegister(19.5, 20, [
 	['TEN', 20],
 	['TWENTY', 60],
 	['ONE HUNDRED', 100]
-])
+]) )
 
-console.log(checkCashRegister(19.5, 20, [
-	['PENNY', 0.01],
-	['NICKEL', 0],
-	['DIME', 0],
-	['QUARTER', 0],
-	['ONE', 0],
-	['FIVE', 0],
-	['TEN', 0],
-	['TWENTY', 0],
-	['ONE HUNDRED', 0]
-]))
+// console.log(checkCashRegister(19.5, 20, [
+// 	['PENNY', 0.01],
+// 	['NICKEL', 0],
+// 	['DIME', 0],
+// 	['QUARTER', 0],
+// 	['ONE', 0],
+// 	['FIVE', 0],
+// 	['TEN', 0],
+// 	['TWENTY', 0],
+// 	['ONE HUNDRED', 0]
+// ]))
 
-console.log(checkCashRegister(19.5, 20, [
-	['PENNY', 0.01],
-	['NICKEL', 0],
-	['DIME', 0],
-	['QUARTER', 0],
-	['ONE', 1],
-	['FIVE', 0],
-	['TEN', 0],
-	['TWENTY', 0],
-	['ONE HUNDRED', 0]
-]))
+// // console.log(checkCashRegister(19.5, 20, [
+// // 	['PENNY', 0.01],
+// // 	['NICKEL', 0],
+// // 	['DIME', 0],
+// // 	['QUARTER', 0],
+// // 	['ONE', 1],
+// // 	['FIVE', 0],
+// // 	['TEN', 0],
+// // 	['TWENTY', 0],
+// // 	['ONE HUNDRED', 0]
+// // ]))
 
-console.log(checkCashRegister(19.5, 20, [
-	['PENNY', 1.01],
-	['NICKEL', 2.05],
-	['DIME', 3.1],
-	['QUARTER', 4.25],
-	['ONE', 90],
-	['FIVE', 55],
-	['TEN', 20],
-	['TWENTY', 60],
-	['ONE HUNDRED', 100]
-]))
+// console.log(checkCashRegister(19.5, 20, [
+// 	['PENNY', 1.01],
+// 	['NICKEL', 2.05],
+// 	['DIME', 3.1],
+// 	['QUARTER', 4.25],
+// 	['ONE', 90],
+// 	['FIVE', 55],
+// 	['TEN', 20],
+// 	['TWENTY', 60],
+// 	['ONE HUNDRED', 100]
+// ]))
