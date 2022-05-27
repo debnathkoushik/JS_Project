@@ -34,7 +34,7 @@ function checkCashRegister(price, cash, cid)
     
     else if (change < totalCid)
     { 
-        for (let i = 0; i > noteValue.length; i++)
+        for (let i = 0; i < noteValue.length; i++)
         {    
             while (change >= noteValue[i])
             {
