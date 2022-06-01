@@ -23,8 +23,8 @@ function checkCashRegister(price, cash, cid)
     }
 
     //"noteValue" contains the value of each type of cash(e.g. PENNY, NICKEL, DIME, etc)
-    let noteValue = [0.01, 0.05, 0.1, 0.25, 1, 5, 10, 20, 100]
-    //             PENNY, NICKEL, DIME,                                
+    let noteValue = [0.01, 0.05, 0.1, 0.25, 1, 5, 10, 20, 100]//PENNY, NICKEL, DIME, QUARTER, ONE, FIVE, TEN, TWENTY, HUNDRED
+                                               
 
     //change - difference between cash paid by the customer and price of the commodity 
     let change = cash - price
